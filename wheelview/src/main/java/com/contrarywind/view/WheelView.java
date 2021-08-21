@@ -72,7 +72,7 @@ public class WheelView extends View {
     private float itemHeight;//每行高度
 
 
-    private Typeface typeface = Typeface.MONOSPACE;//字体样式，默认是等宽字体
+    private Typeface typeface = Typeface.DEFAULT;//字体样式，默认是等宽字体
     private int textColorOut;
     private int textColorCenter;
     private int dividerColor;
@@ -119,7 +119,7 @@ public class WheelView extends View {
     private int mGravity = Gravity.CENTER;
     private int drawCenterContentStart = 0;//中间选中文字开始绘制位置
     private int drawOutContentStart = 0;//非中间文字开始绘制位置
-    private static final float SCALE_CONTENT = 0.8F;//非中间文字则用此控制高度，压扁形成3d错觉
+    //private static final float SCALE_CONTENT = 0.8F;//非中间文字则用此控制高度，压扁形成3d错觉
     private float CENTER_CONTENT_OFFSET;//偏移量
 
     private boolean isAlphaGradient = false; //透明度渐变
@@ -499,7 +499,7 @@ public class WheelView extends View {
                     // 条目经过第一条线
                     canvas.save();
                     canvas.clipRect(0, 0, measuredWidth, firstLineY - translateY);
-                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
+//                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
                     setOutPaintStyle(offsetCoefficient, angle);
                     canvas.drawText(contentText, drawOutContentStart, maxTextHeight, paintOuterText);
                     canvas.restore();
@@ -517,7 +517,7 @@ public class WheelView extends View {
                     canvas.restore();
                     canvas.save();
                     canvas.clipRect(0, secondLineY - translateY, measuredWidth, (int) (itemHeight));
-                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
+//                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
                     setOutPaintStyle(offsetCoefficient, angle);
                     canvas.drawText(contentText, drawOutContentStart, maxTextHeight, paintOuterText);
                     canvas.restore();
@@ -533,7 +533,7 @@ public class WheelView extends View {
                     // 其他条目
                     canvas.save();
                     canvas.clipRect(0, 0, measuredWidth, (int) (itemHeight));
-                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
+//                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
                     setOutPaintStyle(offsetCoefficient, angle);
                     // 控制文字水平偏移距离
                     canvas.drawText(contentText, drawOutContentStart + textXOffset * offsetCoefficient, maxTextHeight, paintOuterText);
